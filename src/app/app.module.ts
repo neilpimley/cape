@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
+import { CapeApp } from './app.component';
 
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
-import { ListPage } from '../pages/list/list';
+import { ParkingSpacesListPage } from '../pages/parking-spaces-list/parking-spaces-list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -14,21 +14,21 @@ import { ParkingService } from '../services/parking.service';
 
 @NgModule({
   declarations: [
-    MyApp,
+    CapeApp,
     HelloIonicPage,
     ItemDetailsPage,
-    ListPage
+    ParkingSpacesListPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(CapeApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    CapeApp,
     HelloIonicPage,
     ItemDetailsPage,
-    ListPage
+    ParkingSpacesListPage
   ],
   providers: [
     StatusBar,
