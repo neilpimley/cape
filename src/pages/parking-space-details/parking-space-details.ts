@@ -18,6 +18,7 @@ export class ItemDetailsPage {
     this.selectedItem = navParams.get('item');
     this.coords = navParams.get('coords');
 
-    this.geolink = this.domSanitizer.bypassSecurityTrustUrl(`geo:${this.coords[0][1]},${this.coords[0][0]}`)
+    this.geolink = this.domSanitizer.bypassSecurityTrustUrl(
+      `https://www.google.com/maps/dir/?api=1&destination=${this.coords[0][1]},${this.coords[0][0]}`)
   }
 }
