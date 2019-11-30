@@ -1,11 +1,11 @@
-<!-- <ion-header>
+<ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Hello Ionic</ion-title>
   </ion-navbar>
-</ion-header> -->
+</ion-header>
 
 
 <ion-content padding>
@@ -37,6 +37,14 @@
 
   <div *ngIf="page===2">
 
-    <button ion-button full color="primary" (click)="test()">Load calander</button>
+    <h2>Your upcoming events</h2>
+    <ion-list>
+      <button ion-item *ngFor="let item of calanderItems" (click)="itemTapped($event, item)">
+        <h2>{{item.title}}</h2>
+        <h3>{{item.eventLocation}}</h3>
+        <p>{{item.start}}</p>
+      </button>
+    </ion-list>
+    <!-- <button ion-button full color="primary" (click)="test()">Load calander</button> -->
   </div>
 </ion-content>

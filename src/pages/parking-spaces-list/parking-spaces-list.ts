@@ -15,19 +15,23 @@ export class ParkingSpacesListPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public _parkingService: ParkingService,
+    public _parkingService: ParkingService
   ) {
-
-    this._parkingService.getSpacesNear(51.554764, -0.1883, 100).subscribe((res) => {
+    
+      // If we navigated to this page, we will have an item available as a nav param
+    let selectedItem = navParams.get('item') || {lat: 51.554764, lng: -0.1883 };
+    console.log(selectedItem);
+    this._parkingService.getSpacesNear(selectedItem.lat, selectedItem.lng, 100).subscribe((res) => {
       const body = res.json();
       const result = body.Result || body || {};
       this.parkingSpaces = result;
     })
   }
 
-  itemTapped(event, item) {
+  itemTapped(event, item, coords) {
     this.navCtrl.push(ItemDetailsPage, {
-      item: item
+      item: item,
+      coords
     });
   }
 }

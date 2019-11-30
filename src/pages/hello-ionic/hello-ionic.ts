@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Calendar } from '@ionic-native/calendar';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { Http, Headers } from '@angular/http';
+import { NavController, NavParams } from 'ionic-angular';
+import { ParkingSpacesListPage } from '../parking-spaces-list/parking-spaces-list'
 
 @Component({
   selector: 'page-hello-ionic',
@@ -8,20 +11,36 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 })
 export class HelloIonicPage {
   page: number = 0;
+  calanderItems: any[] = [];
   constructor(
     private calander: Calendar,
-    private localNotifications: LocalNotifications) {
+    private localNotifications: LocalNotifications,
+    private http: Http,
+    private navCtrl: NavController) {
   }
 
   test() {
+    console.log(this.calander);
     this.calander.listCalendars().then((calanders) => {
+
       let calander = calanders.filter(calander => calander.isPrimary);
       let now = new Date(Date.now());
-      var nextWeek = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
-      console.log(this.calander.listEventsInRange(now, nextWeek));
+      var nextWeek = new Date(now.getTime() + 6 * 24 * 60 * 60 * 1000 + Math.floor(Math.random() * 1000));
+      this.calander.listEventsInRange(now, nextWeek)
+          .then(val => {
+            console.log(val.filter(v => v.eventLocation));
+            this.calanderItems = val.filter(v => v.eventLocation).map(val => ({
+              ...val,
+              start: new Date(val.dtstart).toDateString()
+            }));
+          });
     })
   }
-
+  async getGeocode(location) {
+    return this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=AIzaSyA6c9VcPON-GUfkKNLtKW42S0ZVWq8VGT8`)
+        .toPromise();
+    
+  }
   notify() {
     console.log(this.localNotifications);
     this.localNotifications.schedule({
@@ -31,11 +50,23 @@ export class HelloIonicPage {
     });
   }
 
+  itemTapped(event, item) {
+    this.getGeocode(item.eventLocation).then((val) => {
+      let location = val.json().results[0].geometry.location;
+      console.log(location);
+      this.navCtrl.push(ParkingSpacesListPage, {
+        item: location
+      });
+    })
+
+  }
+
   page1() {
     this.page = 1;
   }
   
   page2() {
+    this.test();
     this.page = 2;
   }
 }

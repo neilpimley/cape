@@ -11,7 +11,7 @@
 
   <ion-list>
     <button ion-item *ngFor="let space of parkingSpaces?.features"
-      (click)="itemTapped($event, space.properties!.regulations[0])">
+      (click)="itemTapped($event, space.properties!.regulations[0], space.geometry.coordinates)">
       <ion-icon name="car" item-left></ion-icon>
       {{space.properties!.location!.sideOfStreet}} hand side of <br />{{space.properties!.location!.streetName}}
 
