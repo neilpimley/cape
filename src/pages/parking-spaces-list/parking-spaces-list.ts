@@ -6,7 +6,7 @@ import { ParkingService } from '../../services/parking.service';
 
 @Component({
   selector: 'page-list',
-  templateUrl: 'list.html'
+  templateUrl: 'parking-spaces-list.html'
 })
 export class ParkingSpacesListPage {
   icons: string[];
@@ -17,16 +17,12 @@ export class ParkingSpacesListPage {
     public navParams: NavParams,
     public _parkingService: ParkingService,
   ) {
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-      'american-football', 'boat', 'bluetooth', 'build'];
 
-    this._parkingService.getSpacesNear(51.525158, -0.3448855).subscribe((spaces) => {
-      this.parkingSpaces = spaces;
-      console.log(spaces);
-      console.log(spaces!.properties!.location!.sideOfStreet);
-      console.log(spaces!.properties!.location!.streetName);
+    this._parkingService.getSpacesNear(51.525158, -0.3448855, 1).subscribe((res) => {
+      const body = res.json();
+      const result = body.Result || body || {};
+      this.parkingSpaces = result;
     })
-
   }
 
   itemTapped(event, item) {

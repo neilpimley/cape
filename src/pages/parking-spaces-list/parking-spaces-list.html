@@ -8,9 +8,12 @@
 </ion-header>
 
 <ion-content>
+
   <ion-list>
-    <button ion-item *ngFor="let space of parkingSpaces" (click)="itemTapped($event, space)">
-      {{space.properties!.location!.sideOfStreet}} of spaces.properties!.location!.streetName
+    <button ion-item *ngFor="let space of parkingSpaces?.features" (click)="itemTapped($event, space)">
+      <ion-icon name="car" item-left></ion-icon>
+      {{space.properties!.location!.sideOfStreet}} hand side of <br />{{space.properties!.location!.streetName}}
     </button>
   </ion-list>
+
 </ion-content>
