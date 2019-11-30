@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle *ngIf="!selectedItem">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Parking Details</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <p text-center *ngIf="selectedItem">
+
+    <p> {{selectedItem.rule.activity}}</p>
+    <p> {{selectedItem.userClasses!.classes}}</p>
+    <p> Days: {{selectedItem.timeSpans[0].daysOfWeek.days}}</p>
+    <p> Times: {{selectedItem.timeSpans[0].timesOfDay.from}} - {{selectedItem.timeSpans[0].timesOfDay.to}}</p>
+    <p> {{selectedItem.rule.payment}}</p>
+    <p> {{selectedItem.rule.maxStay}}</p>
+    <p> {{selectedItem.rule.noReturn}}</p>
+
+
+</ion-content>

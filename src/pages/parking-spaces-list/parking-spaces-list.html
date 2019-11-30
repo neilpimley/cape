@@ -10,9 +10,14 @@
 <ion-content>
 
   <ion-list>
-    <button ion-item *ngFor="let space of parkingSpaces?.features" (click)="itemTapped($event, space)">
+    <button ion-item *ngFor="let space of parkingSpaces?.features"
+      (click)="itemTapped($event, space.properties!.regulations[0])">
       <ion-icon name="car" item-left></ion-icon>
       {{space.properties!.location!.sideOfStreet}} hand side of <br />{{space.properties!.location!.streetName}}
+
+      <p>{{space.properties!.regulations[0].rule.payment == false ? 'Free' : '£'}},
+        Permit:</p>
+
     </button>
   </ion-list>
 

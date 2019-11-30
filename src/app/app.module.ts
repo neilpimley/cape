@@ -2,10 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { CapeApp } from './app.component';
-import {HttpModule} from '@angular/http';
+import { HttpModule } from '@angular/http';
 
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
-import { ItemDetailsPage } from '../pages/item-details/item-details';
+import { ItemDetailsPage } from '../pages/parking-space-details/parking-space-details';
 import { ParkingSpacesListPage } from '../pages/parking-spaces-list/parking-spaces-list';
 
 import { StatusBar } from '@ionic-native/status-bar';

@@ -22,10 +22,6 @@ export class ParkingService {
         let top_lat = eventLocationLat + (distance / 111111 / Math.sqrt(2));
         let right_lon = eventLocationLng + (distance / 111111 / Math.sqrt(2));
 
-        bottom_lat = 51.5535663;
-        left_lon = -0.1887717;
-        top_lat = 51.5559623;
-        right_lon = -0.1878357;
         return this.http.get(`${this._url}?viewport=${bottom_lat},${left_lon},${top_lat},${right_lon}`, {
             headers: headers
         });

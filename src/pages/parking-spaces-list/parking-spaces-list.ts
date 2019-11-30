@@ -1,7 +1,7 @@
 
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { ItemDetailsPage } from '../item-details/item-details';
+import { ItemDetailsPage } from '../parking-space-details/parking-space-details';
 import { ParkingService } from '../../services/parking.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class ParkingSpacesListPage {
     public _parkingService: ParkingService,
   ) {
 
-    this._parkingService.getSpacesNear(51.525158, -0.3448855, 1).subscribe((res) => {
+    this._parkingService.getSpacesNear(51.554764, -0.1883, 100).subscribe((res) => {
       const body = res.json();
       const result = body.Result || body || {};
       this.parkingSpaces = result;
