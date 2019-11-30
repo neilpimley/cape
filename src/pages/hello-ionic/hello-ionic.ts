@@ -7,6 +7,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
   templateUrl: 'hello-ionic.html'
 })
 export class HelloIonicPage {
+  page: number = 0;
   constructor(
     private calander: Calendar,
     private localNotifications: LocalNotifications) {
@@ -15,7 +16,7 @@ export class HelloIonicPage {
   test() {
     this.calander.listCalendars().then((calanders) => {
       let calander = calanders.filter(calander => calander.isPrimary);
-      let now = new Date();
+      let now = new Date(Date.now());
       var nextWeek = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
       console.log(this.calander.listEventsInRange(now, nextWeek));
     })
@@ -28,5 +29,13 @@ export class HelloIonicPage {
       text: 'Single ILocalNotification',
       priority: 2 
     });
+  }
+
+  page1() {
+    this.page = 1;
+  }
+  
+  page2() {
+    this.page = 2;
   }
 }

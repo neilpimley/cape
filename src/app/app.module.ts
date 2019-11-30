@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { CapeApp } from './app.component';
+import {HttpModule} from '@angular/http';
 
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
@@ -23,6 +24,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(CapeApp),
   ],
   bootstrap: [IonicApp],
