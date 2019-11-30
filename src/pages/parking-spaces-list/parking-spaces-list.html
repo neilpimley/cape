@@ -9,12 +9,8 @@
 
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon name="{{item.icon}}" item-left></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-right>
-        {{item.note}}
-      </div>
+    <button ion-item *ngFor="let space of parkingSpaces" (click)="itemTapped($event, space)">
+      {{space.properties!.location!.sideOfStreet}} of spaces.properties!.location!.streetName
     </button>
   </ion-list>
 </ion-content>
