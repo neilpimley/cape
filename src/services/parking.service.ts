@@ -16,7 +16,7 @@ export class ParkingService {
     public getSpacesNear(lat: number, lng: number): Observable<any> {
         let headers = new Headers();
         this.createAuthorizationHeader(headers);
-        return this.http.get(this._url, {
+        return this.http.get(`${this._url}?viewport=${lat},${lng}`, {
             headers: headers
         });
     }
