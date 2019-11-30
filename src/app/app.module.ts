@@ -10,6 +10,7 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Calendar } from '@ionic-native/calendar';
+import { ParkingService } from '../services/parking.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { Calendar } from '@ionic-native/calendar';
     StatusBar,
     SplashScreen,
     Calendar,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    ParkingService,
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }
