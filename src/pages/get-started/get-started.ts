@@ -30,20 +30,23 @@ export class GetStartedPage {
                 text: 'You have an upcoming event.',
                 priority: 2
               });
+
+              this.navCtrl.push(ParkingSpacesListPage, {
+                item: null
+              });
             }
           })
         
       }, 1000 * 10)
-      platform.ready().then(() => {
-        this.localNotifications.on('click').toPromise()
-        .then(() => {        
-          this.navCtrl.push(ParkingSpacesListPage, {
-            item: location
-          });
-        })
-      });
-  }
+      // console.log(this.localNotifications);
+      // this.localNotifications.getTriggeredIds().then((val) => {
+      //   if(val.length == 0) {
+      //     return;
+      //   }
 
+      // });
+
+  }
   getEvents() {
     console.log(this.calander);
     this.calander.listCalendars().then((calanders) => {
