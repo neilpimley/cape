@@ -17,9 +17,9 @@ export class ParkingSpacesListPage {
     public navParams: NavParams,
     public _parkingService: ParkingService
   ) {
-    
-      // If we navigated to this page, we will have an item available as a nav param
-    let selectedItem = navParams.get('item') || {lat: 51.554764, lng: -0.1883 };
+
+    // If we navigated to this page, we will have an item available as a nav param
+    let selectedItem = navParams.get('item') || { lat: 51.554764, lng: -0.1883 };
     console.log(selectedItem);
     this._parkingService.getSpacesNear(selectedItem.lat, selectedItem.lng, 100).subscribe((res) => {
       const body = res.json();
@@ -28,7 +28,23 @@ export class ParkingSpacesListPage {
     })
   }
 
-  itemTapped(event, item, coords) {
+  public getNumberOfCarsInASpacialArea(coordinates: Array<Array<any>>) {
+    let totdist = 0
+    for (let i = 0; i < coordinates.length; i++) {
+      let lat1 = coordinates[i][1] * Math.PI / 180
+      let lat2 = coordinates[i + 1][1] * Math.PI / 180
+      let latdif = lat2 - lat1
+      let londif = (coordinates[i + 1][0] - coordinates[i][0]) * Math.PI / 180
+
+      let a = Math.sin(latdif / 2) * Math.sin(latdif / 2) + Math.cos(lat1) * Math.cos(lat2)
+        * Math.sin(londif / 2) * Math.sin(londif / 2);
+      let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      totdist = totdist + (6371e3 * c);
+      return Math.round(totdist / 5);
+    }
+  }
+
+  public itemTapped(event, item, coords) {
     this.navCtrl.push(ItemDetailsPage, {
       item: item,
       coords

@@ -2,11 +2,12 @@ import { Component, ViewChild } from '@angular/core';
 
 import { Platform, MenuController, Nav } from 'ionic-angular';
 
-import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
+import { GetStartedPage } from '../pages/get-started/get-started';
 import { ParkingSpacesListPage } from '../pages/parking-spaces-list/parking-spaces-list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
 
 
 @Component({
@@ -15,8 +16,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 export class CapeApp {
   @ViewChild(Nav) nav: Nav;
 
-  // make HelloIonicPage the root (or first) page
-  rootPage = HelloIonicPage;
+  // make GetStartedPage the root (or first) page
+  rootPage = GetStartedPage;
   pages: Array<{ title: string, component: any }>;
 
   constructor(
@@ -29,8 +30,8 @@ export class CapeApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Welcome to Cape', component: HelloIonicPage },
-      { title: 'Nearby Spaces', component: ParkingSpacesListPage }
+      { title: 'Welcome to Cape', component: GetStartedPage },
+      { title: 'Nearby Spaces', component: ParkingSpacesListPage },
     ];
   }
 

@@ -1,13 +1,3 @@
-<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Hello Ionic</ion-title>
-  </ion-navbar>
-</ion-header>
-
-
 <ion-content padding>
   <div *ngIf="page===0">
     <img src="../assets/imgs/home_img.png">
@@ -21,7 +11,7 @@
     </p>
     <p>
       <!-- <button ion-button color="primary" menuToggle>Toggle Menu</button> -->
-      <button ion-button full color="primary" (click)="page1()">Get started</button>
+      <button ion-button full color="primary" (click)="goToPage1()">Get started</button>
     </p>
   </div>
 
@@ -29,11 +19,49 @@
     Please enter your car reg to get the best spaces for your car
 
     <ion-input placeholder="Enter Input"></ion-input>
-    <button ion-button full color="primary" (click)="page2()">Continue</button>
+    <button ion-button full color="primary" (click)="goToPage2()">Continue</button>
 
   </div>
 
+
+
   <div *ngIf="page===2">
+    <img src="../assets/imgs/ford_jeep.jpg">
+    <button ion-button full color="primary" (click)="goToPage3()">Continue</button>
+  </div>
+
+  <div *ngIf="page===3">
+
+    <ion-grid>
+      <ion-row>
+        <ion-col></ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col> </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="3">
+        </ion-col>
+        <ion-col>
+          <img src="../assets/imgs/google_button.png" (click)="goToPage4()">
+        </ion-col>
+        <ion-col size="3">
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col> </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col> </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div *ngIf="page===4">
 
     <h2>Your upcoming events</h2>
     <ion-list>

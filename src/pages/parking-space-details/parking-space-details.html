@@ -8,16 +8,28 @@
 </ion-header>
 
 <ion-content>
-  <p text-center *ngIf="selectedItem">
+  <div class="row">
+    <div class="col"> Days:</div>
+    <div class="col"> {{selectedItem.timeSpans[0].daysOfWeek.days}}</div>
+  </div>
+  <div class="row">
+    <div class="col">Times: </div>
+    <div class="col">{{selectedItem.timeSpans[0].timesOfDay.from}} - {{selectedItem.timeSpans[0].timesOfDay.to}}</div>
+  </div>
+  <div class="row">
+    <div class="col">Payment</div>
+    <div class="col"> {{selectedItem.rule.payment}}</div>
+  </div>
+  <div class="row">
+    <div class="col">Max Stay</div>
+    <div class="col"> {{selectedItem.rule.maxStay}}</div>
+  </div>
+  <div class="row">
+    <div class="col">No Return</div>
+    <div class="col"> {{selectedItem.rule.noReturn}}</div>
+  </div>
 
-    <p> {{selectedItem.rule.activity}}</p>
-    <p> {{selectedItem.userClasses!.classes}}</p>
-    <p> Days: {{selectedItem.timeSpans[0].daysOfWeek.days}}</p>
-    <p> Times: {{selectedItem.timeSpans[0].timesOfDay.from}} - {{selectedItem.timeSpans[0].timesOfDay.to}}</p>
-    <p> {{selectedItem.rule.payment}}</p>
-    <p> {{selectedItem.rule.maxStay}}</p>
-    <p> {{selectedItem.rule.noReturn}}</p>
+  <button ion-button full color="success" (click)="geolink()">Direction to spaces</button>
 
-    <a [href]="geolink">open map</a>
 
 </ion-content>

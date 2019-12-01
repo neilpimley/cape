@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { Calendar } from '@ionic-native/calendar';
 import { LocalNotifications } from '@ionic-native/local-notifications';
-import { Http, Headers } from '@angular/http';
-import { NavController, NavParams } from 'ionic-angular';
+import { Http } from '@angular/http';
+import { NavController } from 'ionic-angular';
 import { ParkingSpacesListPage } from '../parking-spaces-list/parking-spaces-list'
 
 @Component({
-  selector: 'page-hello-ionic',
-  templateUrl: 'hello-ionic.html'
+  selector: 'page-get-started',
+  templateUrl: 'get-started.html'
 })
-export class HelloIonicPage {
+export class GetStartedPage {
   page: number = 0;
   calanderItems: any[] = [];
   constructor(
@@ -19,7 +19,7 @@ export class HelloIonicPage {
     private navCtrl: NavController) {
   }
 
-  test() {
+  getEvents() {
     console.log(this.calander);
     this.calander.listCalendars().then((calanders) => {
 
@@ -27,26 +27,26 @@ export class HelloIonicPage {
       let now = new Date(Date.now());
       var nextWeek = new Date(now.getTime() + 6 * 24 * 60 * 60 * 1000 + Math.floor(Math.random() * 1000));
       this.calander.listEventsInRange(now, nextWeek)
-          .then(val => {
-            console.log(val.filter(v => v.eventLocation));
-            this.calanderItems = val.filter(v => v.eventLocation).map(val => ({
-              ...val,
-              start: new Date(val.dtstart).toDateString()
-            }));
-          });
+        .then(val => {
+          console.log(val.filter(v => v.eventLocation));
+          this.calanderItems = val.filter(v => v.eventLocation).map(val => ({
+            ...val,
+            start: new Date(val.dtstart).toDateString()
+          }));
+        });
     })
   }
   async getGeocode(location) {
     return this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=AIzaSyA6c9VcPON-GUfkKNLtKW42S0ZVWq8VGT8`)
-        .toPromise();
-    
+      .toPromise();
+
   }
   notify() {
     console.log(this.localNotifications);
     this.localNotifications.schedule({
       id: 1,
       text: 'Single ILocalNotification',
-      priority: 2 
+      priority: 2
     });
   }
 
@@ -61,12 +61,21 @@ export class HelloIonicPage {
 
   }
 
-  page1() {
+  goToPage1() {
     this.page = 1;
   }
-  
-  page2() {
-    this.test();
+
+  goToPage2() {
+
     this.page = 2;
+  }
+
+  goToPage3() {
+    this.page = 3;
+  }
+
+  goToPage4() {
+    this.getEvents();
+    this.page = 4;
   }
 }

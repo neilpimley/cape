@@ -4,7 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { CapeApp } from './app.component';
 import { HttpModule } from '@angular/http';
 
-import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
+import { GetStartedPage } from '../pages/get-started/get-started';
 import { ItemDetailsPage } from '../pages/parking-space-details/parking-space-details';
 import { ParkingSpacesListPage } from '../pages/parking-spaces-list/parking-spaces-list';
 
@@ -13,14 +13,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Calendar } from '@ionic-native/calendar';
 import { ParkingService } from '../services/parking.service';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { CalendarAuthorisationPage } from '../pages/calendar-authorisation/calendar-authorisation';
 
 
 @NgModule({
   declarations: [
     CapeApp,
-    HelloIonicPage,
+    GetStartedPage,
     ItemDetailsPage,
-    ParkingSpacesListPage
+    ParkingSpacesListPage,
+    CalendarAuthorisationPage,
   ],
   imports: [
     BrowserModule,
@@ -30,9 +32,10 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
   bootstrap: [IonicApp],
   entryComponents: [
     CapeApp,
-    HelloIonicPage,
+    GetStartedPage,
     ItemDetailsPage,
-    ParkingSpacesListPage
+    ParkingSpacesListPage,
+    CalendarAuthorisationPage,
   ],
   providers: [
     StatusBar,
