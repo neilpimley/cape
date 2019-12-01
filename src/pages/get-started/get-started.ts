@@ -4,6 +4,8 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 import { Http } from '@angular/http';
 import { NavController } from 'ionic-angular';
 import { ParkingSpacesListPage } from '../parking-spaces-list/parking-spaces-list'
+import { Push, PushObject, AndroidPushOptions } from '@ionic-native/push'
+
 
 @Component({
   selector: 'page-get-started',
@@ -16,7 +18,20 @@ export class GetStartedPage {
     private calander: Calendar,
     private localNotifications: LocalNotifications,
     private http: Http,
-    private navCtrl: NavController) {
+    private navCtrl: NavController,
+    private push: Push) {
+      
+      // setInterval(() => {
+      //   http.get("https://api.bens.fun/poll").toPromise()
+      //     .then((val) => {
+      //       console.log(val.text);
+      //     })
+      //   // this.localNotifications.schedule({
+      //   //   id: 1,
+      //   //   text: 'Single ILocalNotification',
+      //   //   priority: 2
+      //   // });
+      // }, 1000 * 10)
   }
 
   getEvents() {
@@ -42,12 +57,7 @@ export class GetStartedPage {
 
   }
   notify() {
-    console.log(this.localNotifications);
-    this.localNotifications.schedule({
-      id: 1,
-      text: 'Single ILocalNotification',
-      priority: 2
-    });
+
   }
 
   itemTapped(event, item) {

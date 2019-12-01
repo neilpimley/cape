@@ -13,6 +13,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Calendar } from '@ionic-native/calendar';
 import { ParkingService } from '../services/parking.service';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { Push } from '@ionic-native/push'
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     Calendar,
     ParkingService,
     LocalNotifications,
+    Push,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
