@@ -1,6 +1,6 @@
 {
-  "name": "Ionic",
-  "short_name": "Ionic",
+  "name": "CAPE - Your parking Superhero",
+  "short_name": "CAPE",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{
