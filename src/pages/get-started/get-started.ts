@@ -71,11 +71,9 @@ export class GetStartedPage {
   }
 
   goToPage3() {
+    this.getEvents();
     this.page = 3;
   }
 
-  goToPage4() {
-    this.getEvents();
-    this.page = 4;
-  }
+
 }
