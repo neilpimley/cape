@@ -13,8 +13,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Calendar } from '@ionic-native/calendar';
 import { ParkingService } from '../services/parking.service';
 import { LocalNotifications } from '@ionic-native/local-notifications';
-import { CalendarAuthorisationPage } from '../pages/calendar-authorisation/calendar-authorisation';
-
 
 @NgModule({
   declarations: [
@@ -22,7 +20,6 @@ import { CalendarAuthorisationPage } from '../pages/calendar-authorisation/calen
     GetStartedPage,
     ItemDetailsPage,
     ParkingSpacesListPage,
-    CalendarAuthorisationPage,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +32,6 @@ import { CalendarAuthorisationPage } from '../pages/calendar-authorisation/calen
     GetStartedPage,
     ItemDetailsPage,
     ParkingSpacesListPage,
-    CalendarAuthorisationPage,
   ],
   providers: [
     StatusBar,
