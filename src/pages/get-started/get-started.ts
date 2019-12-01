@@ -4,8 +4,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 import { Http } from '@angular/http';
 import { NavController } from 'ionic-angular';
 import { ParkingSpacesListPage } from '../parking-spaces-list/parking-spaces-list'
-import { Push, PushObject, AndroidPushOptions } from '@ionic-native/push'
-
+import { Platform} from 'ionic-angular';
 
 @Component({
   selector: 'page-get-started',
@@ -19,19 +18,30 @@ export class GetStartedPage {
     private localNotifications: LocalNotifications,
     private http: Http,
     private navCtrl: NavController,
-    private push: Push) {
+    public platform: Platform) {
       
-      // setInterval(() => {
-      //   http.get("https://api.bens.fun/poll").toPromise()
-      //     .then((val) => {
-      //       console.log(val.text);
-      //     })
-      //   // this.localNotifications.schedule({
-      //   //   id: 1,
-      //   //   text: 'Single ILocalNotification',
-      //   //   priority: 2
-      //   // });
-      // }, 1000 * 10)
+      setInterval(() => {
+        http.get("https://api.bens.fun/poll").toPromise()
+          .then((val) => {
+            console.log(val.text());
+            if(val.text() === 'new event') {
+              this.localNotifications.schedule({
+                id: 1,
+                text: 'You have an upcoming event.',
+                priority: 2
+              });
+            }
+          })
+        
+      }, 1000 * 10)
+      platform.ready().then(() => {
+        this.localNotifications.on('click').toPromise()
+        .then(() => {        
+          this.navCtrl.push(ParkingSpacesListPage, {
+            item: location
+          });
+        })
+      });
   }
 
   getEvents() {

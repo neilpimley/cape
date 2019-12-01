@@ -7,6 +7,8 @@ import { ParkingSpacesListPage } from '../pages/parking-spaces-list/parking-spac
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { LocalNotifications } from '@ionic-native/local-notifications';
+import { NavController } from 'ionic-angular';
 
 
 
@@ -24,9 +26,21 @@ export class CapeApp {
     public platform: Platform,
     public menu: MenuController,
     public statusBar: StatusBar,
-    public splashScreen: SplashScreen
-  ) {
+    public splashScreen: SplashScreen//,
+    // private localNotifications : LocalNotifications,
+    // private navCtrl: NavController
+    ) {
     this.initializeApp();
+
+    
+    // platform.ready().then(() => {
+    //   this.localNotifications.on('click').toPromise()
+    //   .then(() => {        
+    //     this.navCtrl.push(ParkingSpacesListPage, {
+    //       item: location
+    //     });
+    //   })
+    // });
 
     // set our app's pages
     this.pages = [
